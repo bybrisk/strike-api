@@ -11,7 +11,7 @@ import (
 func TestGetRoomDataCRUDOPS(t *testing.T) {
 
 	register := &data.Strike_Meta_Request_Structure{
-		Bybrisk_session_variables: data.Bybrisk_session_variables_struct{
+		bybrisk_session_variables: data.Bybrisk_session_variables_struct{
 			UserId: "abc",
 			BusinessId:"xyz",
 			Handler: "action",
@@ -23,7 +23,7 @@ func TestGetRoomDataCRUDOPS(t *testing.T) {
 			Address: "Mumbai",
 			Phone:"9340212323",
 		},
-		User_session_variables: data.User_session_variables_struct{},
+		user_session_variables: data.User_session_variables_struct{},
 	}
 
 	res:= data.GetRoomDataCRUDOPS(register) 
