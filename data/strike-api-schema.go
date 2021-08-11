@@ -9,11 +9,11 @@ type Strike_Meta_Request_Structure struct{
 
 	// Bybrisk variable from strike bot
 	//
-	bybrisk_session_variables Bybrisk_session_variables_struct `json: "bybrisk_session_variables"`
+	Bybrisk_session_variables Bybrisk_session_variables_struct `json: "bybrisk_session_variables"`
 
 	// Our own variable from previous API
 	//
-	user_session_variables User_session_variables_struct `json: "user_session_variables"`
+	User_session_variables User_session_variables_struct `json: "user_session_variables"`
 }
 
 type Bybrisk_session_variables_struct struct{
