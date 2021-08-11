@@ -1,24 +1,35 @@
 package data_test
 
 import (
-	//"testing"
-	//"fmt"
-	//"github.com/bybrisk/input-register-api/data"
+	"testing"
+	"fmt"
+	"github.com/bybrisk/strike-api/data"
 )
 
 
 
-/*func TestRegisterUserCRUDOPS(t *testing.T) {
+func TestGetRoomDataCRUDOPS(t *testing.T) {
 
-	register := &data.RegisterUserToBusinessStruct{
-		BusinessID: "6038bd0fc35e3b8e8bd9f81a",
-		UserID: "6083deb86fcd474489784fee",
+	register := &data.Strike_Meta_Request_Structure{
+		Bybrisk_session_variables: data.Bybrisk_session_variables_struct{
+			UserId: "abc",
+			BusinessId:"xyz",
+			Handler: "action",
+			Location: data.GeoLocation_struct{
+				Latitude:23.45343545,
+				Longitude:77.454524,
+			},
+			Username:"viky",
+			Address: "Mumbai",
+			Phone:"9340212323",
+		},
+		User_session_variables: data.User_session_variables_struct{},
 	}
 
-	res:= data.RegisterUserToBusinessCRUDOPS(register) 
+	res:= data.GetRoomDataCRUDOPS(register) 
 
 	fmt.Println(res)
-}*/
+}
 
 /*func TestGetUserIDCRUDOPS(t *testing.T){
 	res:= data.GetUserIDCRUDOPS("9340232345")

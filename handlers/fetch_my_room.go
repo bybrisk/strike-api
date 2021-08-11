@@ -18,6 +18,7 @@ import (
 func (p *Strike_Register) Fetch_My_Room (w http.ResponseWriter, r *http.Request){
 	p.l.Println("Handle POST request -> strike-api Module mecbot fetch_my_room")
 	request := &data.Strike_Meta_Request_Structure{}
+	fmt.Println(request)
 
 	err:=request.FromJSONToStrike_Meta_Request_Structure(r.Body)
 	if err!=nil {
