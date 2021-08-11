@@ -3,6 +3,8 @@ github.com/aws/aws-sdk-go v1.34.28/go.mod h1:H7NKnBqNVzoTJpGfLrQkkD+ytBA93eiDYi/
 github.com/bybrisk/strike-api v0.0.0-20210811163240-ea88439fd7a9 h1:P5+gXpgQ6fMqVG2KO3ezAzlqKwJ1fF5zmiYird0lZ1s=
 github.com/bybrisk/strike-api/data v0.0.0-20210811163240-ea88439fd7a9 h1:cGnzRI0pXqok0sabSzkkLWxGYBnS1C/uQHnk3shLXDc=
 github.com/bybrisk/strike-api/data v0.0.0-20210811163240-ea88439fd7a9/go.mod h1:hQGIhe6LUXgQe7JyqULxu6emIEz3/JguYV7pVkKgG5o=
+github.com/bybrisk/strike-api/data v0.0.0-20210811175318-4515baac4e00 h1:U5A4+oIjTN+kW9pz+Po20Z/kxsQTuAMD1pRCz61ZEtE=
+github.com/bybrisk/strike-api/data v0.0.0-20210811175318-4515baac4e00/go.mod h1:hQGIhe6LUXgQe7JyqULxu6emIEz3/JguYV7pVkKgG5o=
 github.com/bybrisk/structs v0.0.0-20201109044720-899a1e012b8c/go.mod h1:+ozPcEcgRTvbDXzFyBlUTgv1G2niBpEsIzF5tySMIck=
 github.com/creack/pty v1.1.9/go.mod h1:oKZEueFk5CKHvIhNR5MUki03XCEU+Q6VDXinZuGJ33E=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
