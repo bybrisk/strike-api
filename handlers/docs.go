@@ -1,6 +1,6 @@
-// Package classification of Input-Register API
+// Package classification of Strike-Bots API
 //
-// Documentation for Input-Register API
+// Documentation for Strike-Bots API
 //
 //	Schemes: http
 //	BasePath: /
@@ -15,7 +15,7 @@
 // swagger:meta
 
 package handlers
-import "github.com/bybrisk/input-register-api/data"
+import "github.com/bybrisk/strike-api/data"
 
 //
 // NOTE: Types defined here are purely for documentation purposes
@@ -42,34 +42,18 @@ type errorValidationWrapper struct {
 type noContentResponseWrapper struct {
 }
 
-// Success message on a single user registeration
-// swagger:response registerPostResponse
-type accountPostResponseWrapper struct {
-	// Success message on newly registered user
+// Response with user room
+// swagger:response roomPostResponse
+type roomPostResponseWrapper struct {
+	// Data structure with room info of a user
 	// in: body
-	Body data.RegisterPostSuccess
+	Body data.Response_wrapper_structure
 }
 
-// swagger:parameters registerAUser
+// swagger:parameters getMyRoom
 type registerAUserParmsWrapper struct {
-	// Data structure to register a user.
+	// Data structure to accept the request from the app.
 	// in: body
 	// required: true
-	Body data.RegisterUserStructure
-}
-
-// swagger:parameters registerToBusiness
-type registerAUserToBusinessParmsWrapper struct {
-	// Data structure to register a user to a business.
-	// in: body
-	// required: true
-	Body data.RegisterUserToBusinessStruct
-}
-
-// Success message on subscribing to a business
-// swagger:response registerToBusinessPostResponse
-type registerAUserToBusinessPostResponseWrapper struct {
-	// Success message on subscribing to a business
-	// in: body
-	Body data.RegisterToBusinessPostSuccess
+	Body data.Strike_Meta_Request_Structure
 }

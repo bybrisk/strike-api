@@ -4,7 +4,7 @@ import (
 	"log"
 )
 
-type Input_Register struct {
+type Strike_Register struct {
  l *log.Logger
 }
 
@@ -18,6 +18,6 @@ type ValidationError struct {
 	Messages []string `json:"messages"`
 }
 
-func New_Input_Register(l *log.Logger) *Input_Register{
-	return &Input_Register{l}
+func New_Strike_Register(l *log.Logger) *Strike_Register{
+	return &Strike_Register{l}
 }

@@ -2,170 +2,162 @@ package data
 
 import (
 	"github.com/go-playground/validator/v10"
-	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
 //post request for registering a user
-type RegisterUserStructure struct{
-	// UserID of the user
-	//
-	// required: true
-	// max length: 1000
-	UserID string `json: "userID" validate:"required"`
+type Strike_Meta_Request_Structure struct{
 
-	// The full Name of the user
+	// Bybrisk variable from strike bot
 	//
-	// required: true
-	// max length: 1000
-	UserName string `json: "userName" validate:"required"`
+	Bybrisk_session_variables Bybrisk_session_variables_struct `json: "bybrisk_session_variables"`
 
-	//Phone number of the customer
+	// Our own variable from previous API
 	//
-	// required: true
-	// max length: 1000
-	PhoneNumber string `json: "phoneNumer" validate:"required"`
-
-	// Complete address of the user
-	//
-	// required: true
-	// max length: 1000
-	Address string `json: "address" validate:"required"`
-
-	// Latitude of the customer
-	//
-	// required: true
-	// max length: 1000
-	Latitude float64 `json: "latitude" validate:"required"`
-
-	// Longitude of the customer
-	//
-	// required: true
-	// max length: 1000
-	Longitude float64 `json: "longitude" validate:"required"`
+	User_session_variables User_session_variables_struct `json: "user_session_variables"`
 }
 
-//post request for registering a user
-type RegisterUserToBusinessStruct struct{
-	// UserID of the user 
-	//
-	// required: true
-	// max length: 1000
-	UserID string `json: "userID" validate:"required"`
+type Bybrisk_session_variables_struct struct{
 
-	// BusinessID of the business user is subscribing to
+	// User ID on Bybrisk
 	//
-	// required: true
-	// max length: 1000
-	BusinessID string `json: "businessID" validate:"required"`
-}
-
-//post response
-type RegisterPostSuccess struct {
-	//userID of the user
-	//
-	UserID string `json:"userID"`
-	//Message response
-	//
-	Message string `json:"message"`
-
-	//status code
-	//
-	Status int64 `json:"status"`
-
-	//Data of the user
-	//
-	Data IdOfDoc `json:"data"`
-}
-
-//post response
-type RegisterToBusinessPostSuccess struct {
-	//businessID of the business
-	//
-	BusinessID string `json:"businessID"`
-
-	//Message response
-	//
-	Message string `json:"message"`
-
-	//status code
-	//
-	Status int64 `json:"status"`
-
-	//Business detail object
-	//
-	Detail SubscriptionStruct `json:"detail"`
-
-}
-
-type IdOfDoc struct{
-	ID primitive.ObjectID `json:"-" bson:"_id"` 
-
-	//Registeredlatitude of the user
-	//
-	Latitude float64 `json:"latitude"`
+	UserId string `json:"userId"`
 	
-	//Registered longitude of the user
+	// Our own business Id in Bybrisk
 	//
-	Longitude float64 `json:"longitude"`
-	
-	//registered phone number of the user
-	//
-	PhoneNumber string `json:"phonenumber"`
-	
-	//Registered name of the user
-	//
-	UserName string `json:"username"`
-	
-	//Registered address if the user
-	//
-	Address string `json:"address"`
-	
-	//Details of the subcription
-	//
-	Subscription []SubscriptionStruct `json:"subscription"`
-}
+	BusinessId string `json:"businessId"`
 
-type SubscriptionStruct struct {
-	//BusinessID of the business
-	//
-	BusinessID string `json:"businessid"`
-	
-	//Name of the business
-	//
-	BusinessName string `json:"businessname"`
-	
-	//Category of the business
-	//
-	BusinessCategory string `json:"businesscategory"`
+	// Handler Name for the API chain
+    //
+	Handler string `json:"handler"`
 
-	//Url of the display profile of the business
+	// Current location of the user
 	//
-	Picurl string `json:"picurl"`
+	Location GeoLocation_struct `json:"location"`
 
-	//Address of the business
+	// Username of the user
+	//
+	Username string `json:"username"`
+
+	// Address of the user
 	//
 	Address string `json:"address"`
 
-	//Email of the business
+	// Phone number of the user
 	//
-	Email string `json:"email"`
+	Phone string `json:"phone"`
+}
 
-	//Latitude of the business
+type GeoLocation_struct struct{
+	// Latitude
 	//
 	Latitude float64 `json:"latitude"`
 
-	//Longitude of the business
+	// Longitude
 	//
 	Longitude float64 `json:"longitude"`
-
 }
 
-func (d *RegisterUserStructure) ValidateRegisterUserStructure() error {
-	validate := validator.New()
-	return validate.Struct(d)
+type User_session_variables_struct struct{
 }
 
-func (d *RegisterUserToBusinessStruct) ValidateRegisterUserToBusinessStruct() error {
+// Response structure
+// Boiler plate response strucutre
+
+type Response_wrapper_structure struct{
+	
+	// Internal status of the API
+	//
+	Status int64 `json:"status"`
+
+	// Body structure
+	//
+	Body Body_structure `json:"body"`
+}
+
+type Body_structure struct{
+
+	// Handler name of the API chain
+	//
+	ActionHandler string `json:"actionHandler"`
+
+	// URI of the next API in the chain
+	//
+	NextActionHandler string `json:"nextActionHandler"`
+
+	// Question Array structure
+	//
+	QuestionArray []Transaction_structure `json:"questionArray"`
+}
+
+type Transaction_structure struct{
+
+	// Question object
+	//
+	Question Question_structure `json:"question"`
+
+	// Answer Object
+	//
+	Answer Answer_structure `json:"answer"`
+}
+
+type Question_structure struct{
+
+	// UI type of the question
+	//
+	QuestionType string `json:"questionType"`
+
+	// This would depend on the questionType
+	// So we use all the type for meta description
+	//
+	// This defines Text for the UI
+	QText string `json:"qText"`
+
+	//This defines Card object for the UI
+	//
+	QCard Card_structure `json:"qCard"`
+
+	// Context of the question
+	// The value will be binded in this key
+	//
+	QContext string `json:"qContext"`
+
+	// Discription of the data strucutre of the question object for strike UI engine
+	//
+	QuestionDS string `json:"questionDS"`
+}
+
+type Answer_structure struct{
+
+	// UI type of the answer
+	//
+	ResponseType string `json:"responseType"`
+
+	// This would depend on the responseType
+	// So we use all the type for meta description
+	//
+	// This defines Text for the UI
+	//QText string `json:"qText"`
+
+	//This defines Card object for the UI
+	//
+	//QCard Card_structure `json:"qCard"`
+
+	// Set this to true if we want multiple values could be selected by the user for this particular question
+	//
+	MultipleSelect bool `json:"multipleSelect"`
+
+	// Discription of the data strucutre of the question object for strike UI engine
+	//
+	ResponseDS string `json:"responseDS"`
+}
+
+// UI specific structures
+
+type Card_structure struct{
+	faang string `json:"john"`
+}
+
+func (d *Strike_Meta_Request_Structure) ValidateStrike_Meta_Request_Structure() error {
 	validate := validator.New()
 	return validate.Struct(d)
 }

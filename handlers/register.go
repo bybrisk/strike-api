@@ -4,41 +4,41 @@ package handlers
 import (
 	"net/http"
 	"fmt"
-	"github.com/bybrisk/input-register-api/data"
+	"github.com/bybrisk/strike-api/data"
 )
 
-// swagger:route POST /user/register user registerAUser
-// Register a user to input tool.
+// swagger:route POST /strike/mecbot/fetch_my_room mecbot getMyRoom
+// Fetch my rooms.
 //
 // responses:
-//	200: registerPostResponse
+//	200: roomPostResponse
 //  422: errorValidation
 //  501: errorResponse
 
-func (p *Input_Register) Register_User (w http.ResponseWriter, r *http.Request){
-	p.l.Println("Handle POST request -> user-api Module")
-	registeration := &data.RegisterUserStructure{}
+func (p *Input_Register) Fetch_My_Room (w http.ResponseWriter, r *http.Request){
+	p.l.Println("Handle POST request -> strike-api Module mecbot fetch_my_room")
+	request := &data.Strike_Meta_Request_Structure{}
 
-	err:=registeration.FromJSONToRegisterUserStructure(r.Body)
+	err:=request.FromJSONToStrike_Meta_Request_Structure(r.Body)
 	if err!=nil {
 		http.Error(w,"Data failed to unmarshel", http.StatusBadRequest)
 	}
 
 	//validate the data
-	err = registeration.ValidateRegisterUserStructure()
+	err = request.ValidateStrike_Meta_Request_Structure()
 	if err!=nil {
-		p.l.Println("Validation error in POST request -> user-api Module \n",err)
+		p.l.Println("Validation error in POST request -> strike-api Module mecbot fetch_my_room \n",err)
 		http.Error(w,fmt.Sprintf("Error in data validation : %s",err), http.StatusBadRequest)
 		return
 	} 
 
-	//add data to mongo
-	response := data.RegisterUserCRUDOPS(registeration)
+	//get data from db
+	response := data.GetRoomDataCRUDOPS(request)
 
 	//writing to the io.Writer
 	w.Header().Set("Content-Type", "application/json")
 	
-	err = response.RegisterPostSuccessToJSON(w)
+	err = response.Response_wrapper_structureToJSON(w)
 	if err!=nil {
 		http.Error(w,"Data with ID failed to marshel",http.StatusInternalServerError)		
 	}
