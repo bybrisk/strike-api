@@ -15,7 +15,7 @@ import (
 //  422: errorValidation
 //  501: errorResponse
 
-func (p *Input_Register) Fetch_My_Room (w http.ResponseWriter, r *http.Request){
+func (p *Strike_Register) Fetch_My_Room (w http.ResponseWriter, r *http.Request){
 	p.l.Println("Handle POST request -> strike-api Module mecbot fetch_my_room")
 	request := &data.Strike_Meta_Request_Structure{}
 
