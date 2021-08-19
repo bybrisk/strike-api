@@ -44,3 +44,4 @@ func (p *Strike_Register) Fetch_My_Room (w http.ResponseWriter, r *http.Request)
 		http.Error(w,"Data with ID failed to marshel",http.StatusInternalServerError)		
 	}
 }
+
