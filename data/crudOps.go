@@ -1,8 +1,11 @@
 package data
 
+import "fmt"
+
 func GetRoomDataCRUDOPS(d *Strike_Meta_Request_Structure) *Response_wrapper_structure{
 	var response Response_wrapper_structure
     
+	fmt.Println(d)
 	// Do db operations
 	//_,_ = GetRoomDetailsFromDatabase(d.Bybrisk_session_variables.UserId)
 	
