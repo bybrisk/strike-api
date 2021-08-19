@@ -18,9 +18,9 @@ import (
 func (p *Strike_Register) Fetch_My_Room (w http.ResponseWriter, r *http.Request){
 	p.l.Println("Handle POST request -> strike-api Module mecbot fetch_my_room")
 	request := &data.Strike_Meta_Request_Structure{}
-	fmt.Println(request)
-
+	fmt.Println(r.Body)
 	err:=request.FromJSONToStrike_Meta_Request_Structure(r.Body)
+	fmt.Println(request)
 	if err!=nil {
 		http.Error(w,"Data failed to unmarshel", http.StatusBadRequest)
 	}
