@@ -166,38 +166,38 @@ type Descriptor_Structure struct{
 	// context-objext is used when the type is set to header
 	// It defines value of which row object to select if the user selects that card
 	//
-	ContextObject string `json:"context-object"`
+	ContextObject string `json:"context-object,omitempty"`
 
 	// card-type is used when the type is set to header
 	// FULL is used when we want our card to take full width of the screen else HALF is used
 	//
-	CardType string `json:"card-type"`
+	CardType string `json:"card-type,omitempty"`
 	
 	// Values of the row for the user to see
 	// It will always be an array of strings
 	//
-	Value []string `json:"value"`
+	Value []string `json:"value,omitempty"`
 
 	// Color is set when the type is h1, h2, etc
 	// It defines the color of the text
 	// We can enter any hexadecimal value too
 	//
-	Color string `json:"color"`
+	Color string `json:"color,omitempty"`
 
 	// Bold is set when the type is h1, h2, etc
 	// It is set to make the text bold
 	//
-	Bold bool `json:"bold"`
+	Bold bool `json:"bold,omitempty"`
 
 	// Original is set when the row type is price_row
 	// It is the original price of the item
 	//
-	Original float64 `json:"original"`
+	Original float64 `json:"original,omitempty"`
 
 	// Currency is set when the type is price_row
 	// It defines the currency we are dealing with
 	//
-	Currency string `json:"currency"`
+	Currency string `json:"currency,omitempty"`
 }
 
 func (d *Strike_Meta_Request_Structure) ValidateStrike_Meta_Request_Structure() error {
