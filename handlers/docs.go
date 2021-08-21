@@ -50,7 +50,7 @@ type roomPostResponseWrapper struct {
 	Body data.Response_wrapper_structure
 }
 
-// swagger:parameters getMyRoom
+// swagger:parameters get
 type registerAUserParmsWrapper struct {
 	// Data structure to accept the request from the app.
 	// in: body

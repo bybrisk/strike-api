@@ -2,10 +2,11 @@ package data
 
 import "fmt"
 
-func GetRoomDataCRUDOPS(d *Strike_Meta_Request_Structure) *Response_wrapper_structure{
+func Fetch_Top_NewsCRUD(d *Strike_Meta_Request_Structure) *Response_wrapper_structure{
 	var response Response_wrapper_structure
     
 	fmt.Println(d)
+	QText_value := "Hi " + d.Bybrisk_session_variables.Username + "! These are the top news for you."
 	// Do db operations
 	//_,_ = GetRoomDetailsFromDatabase(d.Bybrisk_session_variables.UserId)
 	
@@ -13,18 +14,18 @@ func GetRoomDataCRUDOPS(d *Strike_Meta_Request_Structure) *Response_wrapper_stru
 	response = Response_wrapper_structure{
 		Status: 200,
 		Body: Body_structure{
-			ActionHandler: "On/Off Devices",
+			ActionHandler: "postera_news",
 			NextActionHandler: "",
 			QuestionArray: []Transaction_structure{
 				Transaction_structure{
 					Question: Question_structure{
 						QuestionType: "Text",
-						QText: "This is your question",
-						QContext: "app_id",
+						QText: QText_value,
+						QContext: "news_id",
 						QuestionDS: "string",
 					},
 					Answer: Answer_structure{
-						ResponseType: "Date-Ibput",
+						ResponseType: "Date-Input",
 						MultipleSelect: false,
 						ResponseDS: "No DS Required",
 					},
