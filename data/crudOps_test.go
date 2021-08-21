@@ -8,10 +8,10 @@ import (
 
 
 
-func TestGetRoomDataCRUDOPS(t *testing.T) {
+func TestFetch_Top_NewsCRUD(t *testing.T) {
 
 	register := &data.Strike_Meta_Request_Structure{
-		bybrisk_session_variables: data.Bybrisk_session_variables_struct{
+		Bybrisk_session_variables: data.Bybrisk_session_variables_struct{
 			UserId: "abc",
 			BusinessId:"xyz",
 			Handler: "action",
@@ -23,10 +23,10 @@ func TestGetRoomDataCRUDOPS(t *testing.T) {
 			Address: "Mumbai",
 			Phone:"9340212323",
 		},
-		user_session_variables: data.User_session_variables_struct{},
+		User_session_variables: data.User_session_variables_struct{},
 	}
 
-	res:= data.GetRoomDataCRUDOPS(register) 
+	res:= data.Fetch_Top_NewsCRUD(register) 
 
 	fmt.Println(res)
 }

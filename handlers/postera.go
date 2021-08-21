@@ -38,7 +38,6 @@ func (p *Strike_Register) Fetch_Top_News (w http.ResponseWriter, r *http.Request
 	w.Header().Set("Content-Type", "application/json")
 	
 	err = response.Response_wrapper_structureToJSON(w)
-	fmt.Println(response)
 	if err!=nil {
 		http.Error(w,"Data with ID failed to marshel",http.StatusInternalServerError)		
 	}
