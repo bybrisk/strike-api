@@ -21,6 +21,8 @@ github.com/bybrisk/strike-api/data v0.0.0-20210821104422-df9986621d70 h1:oboft7E
 github.com/bybrisk/strike-api/data v0.0.0-20210821104422-df9986621d70/go.mod h1:hQGIhe6LUXgQe7JyqULxu6emIEz3/JguYV7pVkKgG5o=
 github.com/bybrisk/strike-api/data v0.0.0-20210822190905-a698a381b361 h1:pIhHjGUjODjU0jcvTchqkr7bnKN/y+BF55RwJcn1sUs=
 github.com/bybrisk/strike-api/data v0.0.0-20210822190905-a698a381b361/go.mod h1:hQGIhe6LUXgQe7JyqULxu6emIEz3/JguYV7pVkKgG5o=
+github.com/bybrisk/strike-api/data v0.0.0-20210822193511-0add080533f2 h1:HAdO71+0TtaykVMeKA5yOJKC1QZhOCZ2s5PIWSg5m+k=
+github.com/bybrisk/strike-api/data v0.0.0-20210822193511-0add080533f2/go.mod h1:hQGIhe6LUXgQe7JyqULxu6emIEz3/JguYV7pVkKgG5o=
 github.com/bybrisk/structs v0.0.0-20201109044720-899a1e012b8c/go.mod h1:+ozPcEcgRTvbDXzFyBlUTgv1G2niBpEsIzF5tySMIck=
 github.com/creack/pty v1.1.9/go.mod h1:oKZEueFk5CKHvIhNR5MUki03XCEU+Q6VDXinZuGJ33E=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
