@@ -136,7 +136,7 @@ type Answer_structure struct{
 	//
 	//This defines Card object for the UI
 	//
-	//QCard Card_structure `json:"qCard"`
+	QCard [][]Card_Row_Object `json:"qCard,omitempty"`
 
 	// Set this to true if we want multiple values could be selected by the user for this particular question
 	//
