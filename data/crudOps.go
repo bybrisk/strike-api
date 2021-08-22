@@ -46,6 +46,13 @@ func Fetch_Top_NewsCRUD(d *Strike_Meta_Request_Structure) *Response_wrapper_stru
 
 	var newsRespVar NewsResponse
 	err = json.Unmarshal(body, &newsRespVar)
+
+	if newsRespVar.Results[0].ImageURL == "" {
+		newsRespVar.Results[0].ImageURL = "https://s3.amazonaws.com/images.seroundtable.com/google-news-bot-gone-1314363466.jpg"
+	}
+	if newsRespVar.Results[1].ImageURL == "" {
+		newsRespVar.Results[1].ImageURL = "https://miro.medium.com/max/586/1*MpVHIDmhQ5qIoOjlYk4VRA.png"
+	} 
 	
 	// Prepare response
 	response = Response_wrapper_structure{
@@ -122,6 +129,69 @@ func Fetch_Top_NewsCRUD(d *Strike_Meta_Request_Structure) *Response_wrapper_stru
 									Type: "h3",
 									Descriptor: Descriptor_Structure{
 										Value: []string{newsRespVar.Results[0].Link,},
+										Color: "#3884ff",
+										Bold: false,
+									},
+								},
+							},
+							[]Card_Row_Object{
+							    Card_Row_Object{
+									 Type: "header",
+									 Descriptor: Descriptor_Structure{
+										ContextObject: "h1",
+										CardType: "FULL",
+									 },	
+								},
+								Card_Row_Object{
+									Type: "pic_row",
+									Descriptor: Descriptor_Structure{
+										Value: []string{newsRespVar.Results[1].ImageURL,},
+									},
+								},
+								Card_Row_Object{
+									Type: "h2",
+									Descriptor: Descriptor_Structure{
+										Value: []string{newsRespVar.Results[1].Title,},
+										Color: "Black",
+										Bold: true,
+									},
+								},
+								Card_Row_Object{
+									Type: "h4",
+									Descriptor: Descriptor_Structure{
+										Value: []string{newsRespVar.Results[1].SourceID,},
+										Color: "#999999",
+										Bold: false,
+									},
+								},
+								Card_Row_Object{
+									Type: "h2",
+									Descriptor: Descriptor_Structure{
+										Value: []string{"",},
+										Color: "Black",
+										Bold: false,
+									},
+								},
+								Card_Row_Object{
+									Type: "h3",
+									Descriptor: Descriptor_Structure{
+										Value: []string{newsRespVar.Results[1].Description,},
+										Color: "Black",
+										Bold: false,
+									},
+								},
+								Card_Row_Object{
+									Type: "h3",
+									Descriptor: Descriptor_Structure{
+										Value: []string{"",},
+										Color: "Black",
+										Bold: false,
+									},
+								},
+								Card_Row_Object{
+									Type: "h3",
+									Descriptor: Descriptor_Structure{
+										Value: []string{newsRespVar.Results[1].Link,},
 										Color: "#3884ff",
 										Bold: false,
 									},
