@@ -47,12 +47,80 @@ func Fetch_Top_NewsCRUD(d *Strike_Meta_Request_Structure) *Response_wrapper_stru
 	var newsRespVar NewsResponse
 	err = json.Unmarshal(body, &newsRespVar)
 
-	if newsRespVar.Results[0].ImageURL == "" {
-		newsRespVar.Results[0].ImageURL = "https://s3.amazonaws.com/images.seroundtable.com/google-news-bot-gone-1314363466.jpg"
+	var array_card_row_array [][]Card_Row_Object
+	
+	for _,v := range newsRespVar.Results{
+
+		if v.ImageURL == "" {
+			v.ImageURL = "https://s3.amazonaws.com/images.seroundtable.com/google-news-bot-gone-1314363466.jpg"
+		}		
+
+		card_row_array := []Card_Row_Object{
+			Card_Row_Object{
+				 Type: "header",
+				 Descriptor: Descriptor_Structure{
+					ContextObject: "h3",
+					CardType: "FULL",
+				 },	
+			},
+			Card_Row_Object{
+				Type: "pic_row",
+				Descriptor: Descriptor_Structure{
+					Value: []string{v.ImageURL,},
+				},
+			},
+			Card_Row_Object{
+				Type: "h3",
+				Descriptor: Descriptor_Structure{
+					Value: []string{v.Title,},
+					Color: "Black",
+					Bold: true,
+				},
+			},
+			Card_Row_Object{
+				Type: "h4",
+				Descriptor: Descriptor_Structure{
+					Value: []string{v.SourceID,},
+					Color: "#999999",
+					Bold: false,
+				},
+			},
+			Card_Row_Object{
+				Type: "h4",
+				Descriptor: Descriptor_Structure{
+					Value: []string{"",},
+					Color: "Black",
+					Bold: false,
+				},
+			},
+			Card_Row_Object{
+				Type: "h4",
+				Descriptor: Descriptor_Structure{
+					Value: []string{v.Description,},
+					Color: "#999999",
+					Bold: false,
+				},
+			},
+			Card_Row_Object{
+				Type: "h4",
+				Descriptor: Descriptor_Structure{
+					Value: []string{"",},
+					Color: "Black",
+					Bold: false,
+				},
+			},
+			Card_Row_Object{
+				Type: "h4",
+				Descriptor: Descriptor_Structure{
+					Value: []string{v.Link,},
+					Color: "#3884ff",
+					Bold: false,
+				},
+			},
+		}
+
+		array_card_row_array = append(array_card_row_array,card_row_array)
 	}
-	if newsRespVar.Results[1].ImageURL == "" {
-		newsRespVar.Results[1].ImageURL = "https://miro.medium.com/max/586/1*MpVHIDmhQ5qIoOjlYk4VRA.png"
-	} 
 	
 	// Prepare response
 	response = Response_wrapper_structure{
@@ -70,134 +138,7 @@ func Fetch_Top_NewsCRUD(d *Strike_Meta_Request_Structure) *Response_wrapper_stru
 					},
 					Answer: Answer_structure{
 						ResponseType: "Card",
-						QCard: [][]Card_Row_Object{
-					        []Card_Row_Object{
-							    Card_Row_Object{
-									 Type: "header",
-									 Descriptor: Descriptor_Structure{
-										ContextObject: "h1",
-										CardType: "FULL",
-									 },	
-								},
-								Card_Row_Object{
-									Type: "pic_row",
-									Descriptor: Descriptor_Structure{
-										Value: []string{newsRespVar.Results[0].ImageURL,},
-									},
-								},
-								Card_Row_Object{
-									Type: "h2",
-									Descriptor: Descriptor_Structure{
-										Value: []string{newsRespVar.Results[0].Title,},
-										Color: "Black",
-										Bold: true,
-									},
-								},
-								Card_Row_Object{
-									Type: "h4",
-									Descriptor: Descriptor_Structure{
-										Value: []string{newsRespVar.Results[0].SourceID,},
-										Color: "#999999",
-										Bold: false,
-									},
-								},
-								Card_Row_Object{
-									Type: "h2",
-									Descriptor: Descriptor_Structure{
-										Value: []string{"",},
-										Color: "Black",
-										Bold: false,
-									},
-								},
-								Card_Row_Object{
-									Type: "h3",
-									Descriptor: Descriptor_Structure{
-										Value: []string{newsRespVar.Results[0].Description,},
-										Color: "Black",
-										Bold: false,
-									},
-								},
-								Card_Row_Object{
-									Type: "h3",
-									Descriptor: Descriptor_Structure{
-										Value: []string{"",},
-										Color: "Black",
-										Bold: false,
-									},
-								},
-								Card_Row_Object{
-									Type: "h3",
-									Descriptor: Descriptor_Structure{
-										Value: []string{newsRespVar.Results[0].Link,},
-										Color: "#3884ff",
-										Bold: false,
-									},
-								},
-							},
-							[]Card_Row_Object{
-							    Card_Row_Object{
-									 Type: "header",
-									 Descriptor: Descriptor_Structure{
-										ContextObject: "h1",
-										CardType: "FULL",
-									 },	
-								},
-								Card_Row_Object{
-									Type: "pic_row",
-									Descriptor: Descriptor_Structure{
-										Value: []string{newsRespVar.Results[1].ImageURL,},
-									},
-								},
-								Card_Row_Object{
-									Type: "h2",
-									Descriptor: Descriptor_Structure{
-										Value: []string{newsRespVar.Results[1].Title,},
-										Color: "Black",
-										Bold: true,
-									},
-								},
-								Card_Row_Object{
-									Type: "h4",
-									Descriptor: Descriptor_Structure{
-										Value: []string{newsRespVar.Results[1].SourceID,},
-										Color: "#999999",
-										Bold: false,
-									},
-								},
-								Card_Row_Object{
-									Type: "h2",
-									Descriptor: Descriptor_Structure{
-										Value: []string{"",},
-										Color: "Black",
-										Bold: false,
-									},
-								},
-								Card_Row_Object{
-									Type: "h3",
-									Descriptor: Descriptor_Structure{
-										Value: []string{newsRespVar.Results[1].Description,},
-										Color: "Black",
-										Bold: false,
-									},
-								},
-								Card_Row_Object{
-									Type: "h3",
-									Descriptor: Descriptor_Structure{
-										Value: []string{"",},
-										Color: "Black",
-										Bold: false,
-									},
-								},
-								Card_Row_Object{
-									Type: "h3",
-									Descriptor: Descriptor_Structure{
-										Value: []string{newsRespVar.Results[1].Link,},
-										Color: "#3884ff",
-										Bold: false,
-									},
-								},
-							},
-						},
+						QCard: array_card_row_array,
 						MultipleSelect: false,
 						ResponseDS: "No DS Required",
 					},
