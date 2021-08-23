@@ -78,7 +78,7 @@ func Fetch_Top_NewsCRUD(d *Strike_Meta_Request_Structure) *Response_wrapper_stru
 				},
 			},
 			Card_Row_Object{
-				Type: "h4",
+				Type: "h5",
 				Descriptor: Descriptor_Structure{
 					Value: []string{v.SourceID,},
 					Color: "#999999",
@@ -88,16 +88,8 @@ func Fetch_Top_NewsCRUD(d *Strike_Meta_Request_Structure) *Response_wrapper_stru
 			Card_Row_Object{
 				Type: "h4",
 				Descriptor: Descriptor_Structure{
-					Value: []string{"",},
-					Color: "Black",
-					Bold: false,
-				},
-			},
-			Card_Row_Object{
-				Type: "h4",
-				Descriptor: Descriptor_Structure{
 					Value: []string{v.Description,},
-					Color: "#999999",
+					Color: "Black",
 					Bold: false,
 				},
 			},
@@ -110,7 +102,7 @@ func Fetch_Top_NewsCRUD(d *Strike_Meta_Request_Structure) *Response_wrapper_stru
 				},
 			},
 			Card_Row_Object{
-				Type: "h4",
+				Type: "h5",
 				Descriptor: Descriptor_Structure{
 					Value: []string{v.Link,},
 					Color: "#3884ff",
@@ -121,6 +113,24 @@ func Fetch_Top_NewsCRUD(d *Strike_Meta_Request_Structure) *Response_wrapper_stru
 
 		array_card_row_array = append(array_card_row_array,card_row_array)
 	}
+
+	card_row_array_ads := []Card_Row_Object{
+		Card_Row_Object{
+			 Type: "header",
+			 Descriptor: Descriptor_Structure{
+				ContextObject: "pic_row",
+				CardType: "FULL",
+			 },	
+		},
+		Card_Row_Object{
+			Type: "pic_row",
+			Descriptor: Descriptor_Structure{
+				Value: []string{"https://resource.chemlinked.com.cn/food/articles/fQrPhd4PtyDwAE8yWuZq.jpg","https://sourceessay.com/essay/wp-content/uploads/2019/05/content-3948823_640-e1557552210608.jpg",},
+			},
+		},
+	}
+	array_card_row_array = append(array_card_row_array,card_row_array_ads)
+
 	
 	// Prepare response
 	response = Response_wrapper_structure{
@@ -133,7 +143,7 @@ func Fetch_Top_NewsCRUD(d *Strike_Meta_Request_Structure) *Response_wrapper_stru
 					Question: Question_structure{
 						QuestionType: "Text",
 						QText: QText_value,
-						QContext: "news_id",
+						QContext: "",
 						QuestionDS: "string",
 					},
 					Answer: Answer_structure{
