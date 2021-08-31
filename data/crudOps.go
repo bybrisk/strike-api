@@ -59,7 +59,7 @@ func Fetch_Top_NewsCRUD(d *Strike_Meta_Request_Structure) *Response_wrapper_stru
 			Card_Row_Object{
 				 Type: "header",
 				 Descriptor: Descriptor_Structure{
-					ContextObject: "h3",
+					ContextObject: "",
 					CardType: "FULL",
 				 },	
 			},
@@ -86,7 +86,7 @@ func Fetch_Top_NewsCRUD(d *Strike_Meta_Request_Structure) *Response_wrapper_stru
 				},
 			},
 			Card_Row_Object{
-				Type: "h4",
+				Type: "h3",
 				Descriptor: Descriptor_Structure{
 					Value: []string{v.Description,},
 					Color: "Black",
@@ -107,7 +107,7 @@ func Fetch_Top_NewsCRUD(d *Strike_Meta_Request_Structure) *Response_wrapper_stru
 					Value: []string{v.Link,},
 					Color: "#3884ff",
 					Bold: false,
-				},
+				},	
 			},
 		}
 
@@ -149,6 +149,7 @@ func Fetch_Top_NewsCRUD(d *Strike_Meta_Request_Structure) *Response_wrapper_stru
 					Answer: Answer_structure{
 						ResponseType: "Card",
 						QCard: array_card_row_array,
+						CardOrientation: "VERTICAL",
 						MultipleSelect: false,
 						ResponseDS: "No DS Required",
 					},

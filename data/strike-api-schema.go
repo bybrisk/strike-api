@@ -138,6 +138,10 @@ type Answer_structure struct{
 	//
 	QCard [][]Card_Row_Object `json:"qCard,omitempty"`
 
+	//Set this value if card is being used
+	// HORIZONTAL or VERTICAL
+	CardOrientation string `json:"card-orientation,omitempty"`
+
 	// Set this to true if we want multiple values could be selected by the user for this particular question
 	//
 	MultipleSelect bool `json:"multipleSelect"`

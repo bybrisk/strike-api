@@ -3,12 +3,16 @@ package data_test
 import (
 	"testing"
 	"fmt"
-	"github.com/bybrisk/strike-api/data"
+	"io/ioutil"
+	"bytes"
+	"net/http"
+	//"encoding/json"
+	//"github.com/bybrisk/strike-api/data"
 )
 
 
 
-func TestFetch_Top_NewsCRUD(t *testing.T) {
+/*func TestFetch_Top_NewsCRUD(t *testing.T) {
 
 	register := &data.Strike_Meta_Request_Structure{
 		Bybrisk_session_variables: data.Bybrisk_session_variables_struct{
@@ -29,7 +33,7 @@ func TestFetch_Top_NewsCRUD(t *testing.T) {
 	res:= data.Fetch_Top_NewsCRUD(register) 
 
 	fmt.Println(res)
-}
+}*/
 
 /*func TestGetUserIDCRUDOPS(t *testing.T){
 	res:= data.GetUserIDCRUDOPS("9340232345")
