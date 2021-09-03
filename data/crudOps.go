@@ -6,6 +6,7 @@ import (
 	log "github.com/sirupsen/logrus"
 	"net/http"
 	"encoding/json"
+	"github.com/strike-official/go-sdk/strike"
 )
 
 func Fetch_Top_NewsCRUD(d *Strike_Meta_Request_Structure) *Response_wrapper_structure{
@@ -47,7 +48,11 @@ func Fetch_Top_NewsCRUD(d *Strike_Meta_Request_Structure) *Response_wrapper_stru
 	var newsRespVar NewsResponse
 	err = json.Unmarshal(body, &newsRespVar)
 
-	var array_card_row_array [][]Card_Row_Object
+	strike := strike.Create("postera","")
+	question := strike.Question("").QuestionCard(strike).SetHeaderToQuestion(strike,1,"HALF").AddTextRowToQuestion(strike,"h3",QText_value,"#424242",true)
+
+	answer := question.Answer(strike,true).AnswerCardArray(strike,"VERTICAL")
+
 	
 	for _,v := range newsRespVar.Results{
 
@@ -55,108 +60,20 @@ func Fetch_Top_NewsCRUD(d *Strike_Meta_Request_Structure) *Response_wrapper_stru
 			v.ImageURL = "https://s3.amazonaws.com/images.seroundtable.com/google-news-bot-gone-1314363466.jpg"
 		}		
 
-		card_row_array := []Card_Row_Object{
-			Card_Row_Object{
-				 Type: "header",
-				 Descriptor: Descriptor_Structure{
-					ContextObject: "",
-					CardType: "FULL",
-				 },	
-			},
-			Card_Row_Object{
-				Type: "pic_row",
-				Descriptor: Descriptor_Structure{
-					Value: []string{v.ImageURL,},
-				},
-			},
-			Card_Row_Object{
-				Type: "h3",
-				Descriptor: Descriptor_Structure{
-					Value: []string{v.Title,},
-					Color: "Black",
-					Bold: true,
-				},
-			},
-			Card_Row_Object{
-				Type: "h5",
-				Descriptor: Descriptor_Structure{
-					Value: []string{v.SourceID,},
-					Color: "#999999",
-					Bold: false,
-				},
-			},
-			Card_Row_Object{
-				Type: "h3",
-				Descriptor: Descriptor_Structure{
-					Value: []string{v.Description,},
-					Color: "Black",
-					Bold: false,
-				},
-			},
-			Card_Row_Object{
-				Type: "h4",
-				Descriptor: Descriptor_Structure{
-					Value: []string{"",},
-					Color: "Black",
-					Bold: false,
-				},
-			},
-			Card_Row_Object{
-				Type: "h5",
-				Descriptor: Descriptor_Structure{
-					Value: []string{v.Link,},
-					Color: "#3884ff",
-					Bold: false,
-				},	
-			},
-		}
+		answer = answer.AnswerCard(strike).
+		SetHeaderToAnswer(strike, 1, "FULL").
+		AddTextRowToAnswer(strike, "h3", v.Title, "black",true).
+		AddTextRowToAnswer(strike, "h3", v.Description, "#424242",true)
 
-		array_card_row_array = append(array_card_row_array,card_row_array)
+		// v.ImageURL
+		// v.SourceID
+		// v.Link
 	}
-
-	card_row_array_ads := []Card_Row_Object{
-		Card_Row_Object{
-			 Type: "header",
-			 Descriptor: Descriptor_Structure{
-				ContextObject: "pic_row",
-				CardType: "FULL",
-			 },	
-		},
-		Card_Row_Object{
-			Type: "pic_row",
-			Descriptor: Descriptor_Structure{
-				Value: []string{"https://resource.chemlinked.com.cn/food/articles/fQrPhd4PtyDwAE8yWuZq.jpg","https://sourceessay.com/essay/wp-content/uploads/2019/05/content-3948823_640-e1557552210608.jpg",},
-			},
-		},
-	}
-	array_card_row_array = append(array_card_row_array,card_row_array_ads)
-
-	
-	// Prepare response
+    
 	response = Response_wrapper_structure{
-		Status: 200,
-		Body: Body_structure{
-			ActionHandler: "postera_news",
-			NextActionHandler: "",
-			QuestionArray: []Transaction_structure{
-				Transaction_structure{
-					Question: Question_structure{
-						QuestionType: "Text",
-						QText: QText_value,
-						QContext: "",
-						QuestionDS: "string",
-					},
-					Answer: Answer_structure{
-						ResponseType: "Card",
-						QCard: array_card_row_array,
-						CardOrientation: "VERTICAL",
-						MultipleSelect: false,
-						ResponseDS: "No DS Required",
-					},
-				},
-			}, 
-		},
+		Status:200,
+		Body: *strike,
 	}
 
 	return &response
-}		
+}	

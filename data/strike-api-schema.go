@@ -2,6 +2,7 @@ package data
 
 import (
 	"github.com/go-playground/validator/v10"
+	"github.com/strike-official/go-sdk/strike"
 )
 
 //post request for registering a user
@@ -71,40 +72,40 @@ type Response_wrapper_structure struct{
 
 	// Body structure
 	//
-	Body Body_structure `json:"body"`
+	Body strike.Body_structure `json:"body"`
 }
 
 type Body_structure struct{
 
 	// Handler name of the API chain
 	//
-	ActionHandler string `json:"actionHandler"`
+	ActionHandler string `json:"actionHandler,omitempty"`
 
 	// URI of the next API in the chain
 	//
-	NextActionHandler string `json:"nextActionHandler"`
+	NextActionHandler string `json:"nextActionHandler,omitempty"`
 
 	// Question Array structure
 	//
-	QuestionArray []Transaction_structure `json:"questionArray"`
+	QuestionArray []Transaction_structure `json:"questionArray,omitempty"`
 }
 
 type Transaction_structure struct{
 
 	// Question object
 	//
-	Question Question_structure `json:"question"`
+	Question Question_structure `json:"question,omitempty"`
 
 	// Answer Object
 	//
-	Answer Answer_structure `json:"answer"`
+	Answer1 Answer_structure `json:"answer,omitempty"`
 }
 
 type Question_structure struct{
 
 	// UI type of the question
 	//
-	QuestionType string `json:"questionType"`
+	QuestionType string `json:"questionType,omitempty"`
 
 	// This would depend on the questionType
 	//
@@ -118,37 +119,37 @@ type Question_structure struct{
 	// Context of the question
 	// The value will be binded in this key
 	//
-	QContext string `json:"qContext"`
+	QContext string `json:"qContext,omitempty"`
 
 	// Discription of the data strucutre of the question object for strike UI engine
 	//
-	QuestionDS string `json:"questionDS"`
+	QuestionDS string `json:"questionDS,omitempty"`
 }
 
 type Answer_structure struct{
 
 	// UI type of the answer
 	//
-	ResponseType string `json:"responseType"`
+	ResponseType string `json:"responseType,omitempty"`
 
 	// This would depend on the responseType
 	// So we use all the type for meta description
 	//
 	//This defines Card object for the UI
 	//
-	QCard [][]Card_Row_Object `json:"qCard,omitempty"`
+	QCard [][]Card_Row_Object `json:"qCard,omitempty,omitempty"`
 
 	//Set this value if card is being used
 	// HORIZONTAL or VERTICAL
-	CardOrientation string `json:"card-orientation,omitempty"`
+	CardOrientation string `json:"card-orientation,omitempty,omitempty"`
 
 	// Set this to true if we want multiple values could be selected by the user for this particular question
 	//
-	MultipleSelect bool `json:"multipleSelect"`
+	MultipleSelect bool `json:"multipleSelect,omitempty"`
 
 	// Discription of the data strucutre of the question object for strike UI engine
 	//
-	ResponseDS string `json:"responseDS"`
+	ResponseDS string `json:"responseDS,omitempty"`
 }
 
 // UI specific structures
@@ -158,19 +159,20 @@ type Card_Row_Object struct{
 	// Type of row object
 	// valid values are header, pic_row, h1, h2, h3, h4, h5, h6, price_row, video_row 
 	//
-	Type string `json:"type"`
+	Type string `json:"type,omitempty"`
 
 	// Discriptor of the row object
 	//
-	Descriptor Descriptor_Structure `json:"descriptor"`
+	Descriptor Descriptor_Structure `json:"descriptor,omitempty"`
 }
 
 type Descriptor_Structure struct{
 
 	// context-objext is used when the type is set to header
 	// It defines value of which row object to select if the user selects that card
+	// Must be equal to the index of the row
 	//
-	ContextObject string `json:"context-object,omitempty"`
+	ContextObject int `json:"context-object,omitempty"`
 
 	// card-type is used when the type is set to header
 	// FULL is used when we want our card to take full width of the screen else HALF is used
