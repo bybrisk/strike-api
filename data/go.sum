@@ -90,6 +90,8 @@ github.com/stretchr/testify v1.6.1/go.mod h1:6Fq8oRcR53rry900zMqJjRRixrwX3KX962/
 github.com/stretchr/testify v1.7.0/go.mod h1:6Fq8oRcR53rry900zMqJjRRixrwX3KX962/h/Wwjteg=
 github.com/strike-official/go-sdk v0.0.0-20210903111628-195a335bf878 h1:KkcPliV95P/cTlDRvQUn8NitjlTaNICiVqJ25938YI4=
 github.com/strike-official/go-sdk v0.0.0-20210903111628-195a335bf878/go.mod h1:iSnbyjBjDyFnG517NAeWL2T29QXqfo03UJNgSE/jbOw=
+github.com/strike-official/go-sdk/strike v0.0.0-20210903171303-562247e18df4 h1:XCt9wW+PUsP3jZTJ3BLueNIDDDRatLI4IkS1ow9vcUU=
+github.com/strike-official/go-sdk/strike v0.0.0-20210903171303-562247e18df4/go.mod h1:n8RdmRwZe1MaBOKjMHAqbLrIQ9knL4xEsO/bnNkRbYY=
 github.com/tidwall/pretty v1.0.0/go.mod h1:XNkn88O1ChpSDQmQeStsy+sBenx6DDtFZJxhVysOjyk=
 github.com/xdg-go/pbkdf2 v1.0.0 h1:Su7DPu48wXMwC3bs7MCNG+z4FhcyEuz5dlvchbq0B0c=
 github.com/xdg-go/pbkdf2 v1.0.0/go.mod h1:jrpuAogTd400dnrH08LKmI/xc1MbPOebTwRqcT5RDeI=

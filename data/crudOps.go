@@ -62,8 +62,9 @@ func Fetch_Top_NewsCRUD(d *Strike_Meta_Request_Structure) *Response_wrapper_stru
 
 		answer = answer.AnswerCard(strike).
 		SetHeaderToAnswer(strike, 1, "FULL").
+		AddGraphicRowToAnswer(strike, "pic_row", v.ImageURL).
 		AddTextRowToAnswer(strike, "h3", v.Title, "black",true).
-		AddTextRowToAnswer(strike, "h3", v.Description, "#424242",true)
+		AddTextRowToAnswer(strike, "h3", v.Description, "#595959",true)
 
 		// v.ImageURL
 		// v.SourceID
