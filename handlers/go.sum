@@ -31,6 +31,8 @@ github.com/bybrisk/strike-api/data v0.0.0-20210831122107-f1b9e9ddcb1f h1:gfm44q1
 github.com/bybrisk/strike-api/data v0.0.0-20210831122107-f1b9e9ddcb1f/go.mod h1:hQGIhe6LUXgQe7JyqULxu6emIEz3/JguYV7pVkKgG5o=
 github.com/bybrisk/strike-api/data v0.0.0-20210903120101-c7b3b6b3b083 h1:fEeT2oHosTbWG6l+Zconit2Dm7nGdRAwosluR4j46no=
 github.com/bybrisk/strike-api/data v0.0.0-20210903120101-c7b3b6b3b083/go.mod h1:o55GZ5FdmIsm8QK5rgoJbZxMmQ9Uv4ZFAJ/OgKd/rp4=
+github.com/bybrisk/strike-api/data v0.0.0-20210904120905-5696c555a407 h1:u90LJ9VjHz/bLs7LA3I9Xb2Ayok9lb3VEfflyG9Bmgk=
+github.com/bybrisk/strike-api/data v0.0.0-20210904120905-5696c555a407/go.mod h1:OEi6CWT/OuFFrZw9RdFzLZzjEpSV0OvZ0GthZJZNAww=
 github.com/bybrisk/structs v0.0.0-20201109044720-899a1e012b8c/go.mod h1:+ozPcEcgRTvbDXzFyBlUTgv1G2niBpEsIzF5tySMIck=
 github.com/creack/pty v1.1.9/go.mod h1:oKZEueFk5CKHvIhNR5MUki03XCEU+Q6VDXinZuGJ33E=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
@@ -121,6 +123,8 @@ github.com/stretchr/testify v1.6.1/go.mod h1:6Fq8oRcR53rry900zMqJjRRixrwX3KX962/
 github.com/stretchr/testify v1.7.0/go.mod h1:6Fq8oRcR53rry900zMqJjRRixrwX3KX962/h/Wwjteg=
 github.com/strike-official/go-sdk v0.0.0-20210903111628-195a335bf878 h1:KkcPliV95P/cTlDRvQUn8NitjlTaNICiVqJ25938YI4=
 github.com/strike-official/go-sdk v0.0.0-20210903111628-195a335bf878/go.mod h1:iSnbyjBjDyFnG517NAeWL2T29QXqfo03UJNgSE/jbOw=
+github.com/strike-official/go-sdk/strike v0.0.0-20210903171303-562247e18df4 h1:XCt9wW+PUsP3jZTJ3BLueNIDDDRatLI4IkS1ow9vcUU=
+github.com/strike-official/go-sdk/strike v0.0.0-20210903171303-562247e18df4/go.mod h1:n8RdmRwZe1MaBOKjMHAqbLrIQ9knL4xEsO/bnNkRbYY=
 github.com/tidwall/pretty v1.0.0/go.mod h1:XNkn88O1ChpSDQmQeStsy+sBenx6DDtFZJxhVysOjyk=
 github.com/xdg-go/pbkdf2 v1.0.0/go.mod h1:jrpuAogTd400dnrH08LKmI/xc1MbPOebTwRqcT5RDeI=
 github.com/xdg-go/scram v1.0.2/go.mod h1:1WAq6h33pAW+iRreB34OORO2Nf7qel3VV3fjBj+hCSs=
